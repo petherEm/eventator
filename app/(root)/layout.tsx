@@ -1,8 +1,8 @@
-import { ClerkProvider } from "@clerk/nextjs";
-
 import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
+import Header from "@/components/shared/Header";
+import Footer from "@/components/shared/Footer";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -24,10 +24,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider>
-      <html lang="en">
-        <body className={poppins.className}>{children}</body>
-      </html>
-    </ClerkProvider>
+    <div className="flex h-screen flex-col">
+      <Header />
+      <main className="flex-1">{children}</main>
+      <Footer />
+    </div>
   );
 }
